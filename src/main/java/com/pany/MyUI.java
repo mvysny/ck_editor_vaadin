@@ -30,12 +30,13 @@ public class MyUI extends UI {
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
 
+        final CKEditor editor = new CKEditor("Foo");
         final TextField name = new TextField();
         name.setCaption("Type your name here:");
 
         Button button = new Button("Click Me");
         button.addClickListener( e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
+            layout.addComponent(new Label("Thanks " + editor.getText()
                     + ", it works!"));
         });
         button.setClickShortcut(ShortcutAction.KeyCode.Q, ShortcutAction.ModifierKey.ALT, ShortcutAction.ModifierKey.CTRL);
@@ -46,7 +47,7 @@ public class MyUI extends UI {
         layout.setMargin(true);
         layout.setSpacing(true);
 
-        layout.addComponent(new CKEditor("Foo"));
+        layout.addComponent(editor);
 
         setContent(layout);
 

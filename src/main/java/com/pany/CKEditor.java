@@ -19,4 +19,18 @@ public class CKEditor extends AbstractJavaScriptComponent {
     protected CKEditorState getState() {
         return (CKEditorState) super.getState();
     }
+
+
+    @Override
+    protected CKEditorState getState(boolean markAsDirty) {
+        return (CKEditorState) super.getState(markAsDirty);
+    }
+
+    public String getText() {
+        return getState(false).text;
+    }
+
+    public void setText(String text) {
+        getState().text = text;
+    }
 }
