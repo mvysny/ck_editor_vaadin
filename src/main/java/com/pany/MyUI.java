@@ -1,13 +1,10 @@
 package com.pany;
 
-import javax.servlet.annotation.WebServlet;
-
-import com.vaadin.annotations.Push;
+import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.annotations.Widgetset;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
@@ -22,12 +19,13 @@ import com.vaadin.ui.VerticalLayout;
  * overridden to add component to the user interface and initialize non-component functionality.
  */
 @Theme("mytheme")
+@PreserveOnRefresh
 public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
-        
+
         final TextField name = new TextField();
         name.setCaption("Type your name here:");
 
@@ -43,7 +41,9 @@ public class MyUI extends UI {
         layout.addComponents(name, button);
         layout.setMargin(true);
         layout.setSpacing(true);
-        
+
+        layout.addComponent(new CKEditor("Foo"));
+
         setContent(layout);
 
 /*
