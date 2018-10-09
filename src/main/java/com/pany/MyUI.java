@@ -1,10 +1,13 @@
 package com.pany;
 
 import com.vaadin.annotations.PreserveOnRefresh;
+import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Widgetset;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.shared.communication.PushMode;
+import com.vaadin.shared.ui.ui.Transport;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
@@ -20,6 +23,7 @@ import com.vaadin.ui.VerticalLayout;
  */
 @Theme("mytheme")
 @PreserveOnRefresh
+@Push(value = PushMode.AUTOMATIC, transport = Transport.LONG_POLLING)
 public class MyUI extends UI {
 
     @Override
