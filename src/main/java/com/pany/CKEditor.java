@@ -6,7 +6,7 @@ import com.vaadin.ui.AbstractJavaScriptComponent;
 /**
  * @author mavi
  */
-@JavaScript({ "ck_editor.js", "https://cdn.ckeditor.com/4.8.0/standard-all/ckeditor.js" })
+@JavaScript({ "ck_editor.js", "vaadin://ckeditor/ckeditor.js" })
 public class CKEditor extends AbstractJavaScriptComponent {
 
     public CKEditor(String text) {
