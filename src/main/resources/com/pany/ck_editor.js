@@ -1,20 +1,35 @@
 com_pany_CKEditor = function() {
+    var self = this;
     var e = this.getElement();
-    var eid = "editor" + this.getConnectorId();
-    e.innerHTML = "<textarea id=\"" + eid + "\">";
 
-    var editor;
+    var textarea = document.createElement("textarea");
+    e.appendChild(textarea);
 
-    setTimeout(function() { CKEDITOR.replace(eid); }, 2000);
+    var editor = null;
+    var delayedInit = null;
 
-    console.log("CK Editor attached to textarea eid=" + eid);
+    this.updateState = function() {
+        editor.setData(this.getState().text);
+    };
 
     this.onStateChange = function() {
-        // editor.setData(this.getState().text);
+        if (delayedInit == null) {
+            delayedInit = setTimeout(function() {
+                editor = CKEDITOR.replace(textarea);
+                self.updateState();
+            }, 1000);
+        } else if (editor != null) {
+            this.updateState();
+        }
     };
 
     this.onUnregister = function() {
         console.log("Unregistering CK Editor");
-        // editor.destroy();
+        if (delayedInit != null) {
+            clearTimeout(delayedInit);
+        }
+        if (editor != null) {
+            editor.destroy();
+        }
     };
 };
