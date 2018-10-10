@@ -30,14 +30,14 @@ public class MyUI extends UI {
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
 
-        final CKEditor editor = new CKEditor();
-        editor.setText("Foo");
+        final CKEditorField editor = new CKEditorField();
+        editor.setValue("Foo");
+        editor.setWidth("700px");
         final TextField name = new TextField();
         name.setCaption("Type your name here:");
 
         Button button = new Button("Click Me");
-        button.addClickListener( e -> editor.flush());
-        editor.onTextChanged.add(str -> layout.addComponent(new Label("Thanks " + editor.getText()
+        button.addClickListener( e -> layout.addComponent(new Label("Thanks " + editor.getValue()
                 + ", it works!")));
 
         button.setClickShortcut(ShortcutAction.KeyCode.Q, ShortcutAction.ModifierKey.ALT, ShortcutAction.ModifierKey.CTRL);
