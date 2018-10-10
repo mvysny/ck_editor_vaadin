@@ -66,6 +66,13 @@
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-themes</artifactId>
 		</dependency>
+<!--
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+			<version>9.3.24.v20180605</version>
+		</dependency>
+-->
 	</dependencies>
 
 	<build>
