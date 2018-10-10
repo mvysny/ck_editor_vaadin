@@ -2,13 +2,10 @@ package com.pany;
 
 import com.vaadin.annotations.JavaScript;
 import com.vaadin.ui.AbstractJavaScriptComponent;
-import com.vaadin.ui.JavaScriptFunction;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
-
-import elemental.json.JsonArray;
 
 /**
  * @author mavi
@@ -16,18 +13,13 @@ import elemental.json.JsonArray;
 @JavaScript({ "vaadin://ckeditor/ckeditor.js", "ck_editor.js" })
 public class CKEditor extends AbstractJavaScriptComponent {
 
-    private String text;
-
     public CKEditor() {
         setWidth("800px");
         setHeight("400px");
-        addFunction("onText", new JavaScriptFunction() {
-            @Override
-            public void call(JsonArray arguments) {
-                text = arguments.getString(0);
-                for (Consumer<String> consumer : onTextChanged) {
-                    consumer.accept(getText());
-                }
+        addFunction("onText", arguments -> {
+            getState(false).text = arguments.getString(0);
+            for (Consumer<String> consumer : onTextChanged) {
+                consumer.accept(getText());
             }
         });
     }
@@ -46,10 +38,11 @@ public class CKEditor extends AbstractJavaScriptComponent {
     }
 
     public String getText() {
-        return text;
+        return getState(false).text;
     }
 
     public void setText(String text) {
+        getState().text = text;
         callFunction("setText", text);
     }
 

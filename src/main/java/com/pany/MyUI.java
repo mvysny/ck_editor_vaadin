@@ -32,7 +32,7 @@ public class MyUI extends UI {
 
         final CKEditorField editor = new CKEditorField();
         editor.setValue("Foo");
-        editor.setWidth("700px");
+        editor.setWidth("600px");
         final TextField name = new TextField();
         name.setCaption("Type your name here:");
 

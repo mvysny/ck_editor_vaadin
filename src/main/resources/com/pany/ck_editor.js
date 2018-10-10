@@ -28,7 +28,7 @@ com_pany_CKEditor = function() {
             delayedInit = setTimeout(function() {
                 editor = CKEDITOR.replace(textarea);
                 self.updateState();
-                editor.setData(text);
+                editor.setData(self.getState().text);
             }, 100);
         } else if (editor != null) {
             this.updateState();
