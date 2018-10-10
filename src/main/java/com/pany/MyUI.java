@@ -23,7 +23,7 @@ import com.vaadin.ui.VerticalLayout;
  */
 @Theme("mytheme")
 @PreserveOnRefresh
-@Push(value = PushMode.AUTOMATIC, transport = Transport.LONG_POLLING)
+@Push(value = PushMode.AUTOMATIC, transport = Transport.WEBSOCKET_XHR)
 public class MyUI extends UI {
 
     @Override
@@ -51,7 +51,6 @@ public class MyUI extends UI {
 
         setContent(layout);
 
-/*
         new Thread() {
             @Override
             public void run() {
@@ -67,7 +66,6 @@ public class MyUI extends UI {
                 System.out.println("Thread end");
             }
         }.start();
-*/
     }
 
 }

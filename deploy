@@ -2,6 +2,6 @@
 set -e -o pipefail
 mvn clean package
 
-rm -rf /home/mavi/Downloads/apache-karaf-4.1.6/deploy/*.war
+rm -rf /home/mavi/work/DE/apache-karaf-4.1.6/deploy/*.war
 sleep 2
-cp target/*.war /home/mavi/Downloads/apache-karaf-4.1.6/deploy/
+cp target/*.war /home/mavi/work/DE/apache-karaf-4.1.6/deploy/
