@@ -36,9 +36,7 @@ public class MyUI extends UI {
         name.setCaption("Type your name here:");
 
         Button button = new Button("Click Me");
-        button.addClickListener( e -> {
-            editor.flush();
-        });
+        button.addClickListener( e -> editor.flush());
         editor.onTextChanged.add(str -> layout.addComponent(new Label("Thanks " + editor.getText()
                 + ", it works!")));
 
