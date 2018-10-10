@@ -7,9 +7,9 @@ com_pany_CKEditor = function() {
 
     var editor = null;
     var delayedInit = null;
+    var text = "";
 
     this.updateState = function() {
-        editor.setData(this.getState().text);
     };
 
     this.onStateChange = function() {
@@ -17,9 +17,7 @@ com_pany_CKEditor = function() {
             delayedInit = setTimeout(function() {
                 editor = CKEDITOR.replace(textarea);
                 self.updateState();
-                editor.on("change", function(evt) {
-                    self.getState().text = editor.getData();
-                });
+                editor.setData(text);
             }, 1000);
         } else if (editor != null) {
             this.updateState();
@@ -30,9 +28,22 @@ com_pany_CKEditor = function() {
         console.log("Unregistering CK Editor");
         if (delayedInit != null) {
             clearTimeout(delayedInit);
+            delayedInit = null;
         }
         if (editor != null) {
             editor.destroy();
+            editor = null;
         }
     };
+
+    this.flush = function() {
+        self.onText(editor.getData());
+    };
+
+    this.setText = function(newtext) {
+        text = newtext;
+        if (editor != null) {
+            editor.setData(text);
+        }
+    }
 };
