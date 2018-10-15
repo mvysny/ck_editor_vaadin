@@ -95,6 +95,6 @@ public class CKEditorField extends CustomField<String> {
     @Override
     public void setReadOnly(boolean readOnly) {
         super.setReadOnly(readOnly);
-        edit.setVisible(!readOnly);
+        edit.setEnabled(!readOnly);
     }
 }
