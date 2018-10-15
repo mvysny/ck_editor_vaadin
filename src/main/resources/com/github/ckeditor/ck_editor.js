@@ -1,9 +1,9 @@
 com_github_ckeditor_CKEditor = function() {
     var self = this;
-    var e = this.getElement();
+    var element = this.getElement();
 
     var textarea = document.createElement("textarea");
-    e.appendChild(textarea);
+    element.appendChild(textarea);
 
     var editor = null;
     // In some cases the CK Editor initializes so slowly that an unfortunate timing of JS event loop would have us call CKEDITOR.replace
@@ -34,7 +34,11 @@ com_github_ckeditor_CKEditor = function() {
                 self.updateState();
                 editor.setData(self.getState().text);
                 delayedInit = setTimeout(function() {
-                    editor.resize(400, 300);
+                    // need to do this delayed, otherwise CK Editor will crash with 'setting value of 'undefined''
+                    editor.resize(element.offsetWidth, element.offsetHeight);
+                    self.addResizeListener(element, function() {
+                        editor.resize(element.offsetWidth, element.offsetHeight);
+                    });
                 }, 100);
             }, 100);
         } else if (editor != null) {

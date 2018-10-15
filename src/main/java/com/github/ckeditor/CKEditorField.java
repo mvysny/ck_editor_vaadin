@@ -47,6 +47,7 @@ public class CKEditorField extends CustomField<String> {
         content.setSizeFull();
         final CKEditor editor = new CKEditor();
         editor.setText(getValue());
+        editor.setSizeFull();
         content.addComponent(editor);
         content.setExpandRatio(editor, 1f);
 
