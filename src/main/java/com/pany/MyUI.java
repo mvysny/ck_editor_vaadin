@@ -1,16 +1,9 @@
 package com.pany;
 
-import com.vaadin.annotations.PreserveOnRefresh;
-import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.Widgetset;
-import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.shared.communication.PushMode;
-import com.vaadin.shared.ui.ui.Transport;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
@@ -22,8 +15,6 @@ import com.vaadin.ui.VerticalLayout;
  * overridden to add component to the user interface and initialize non-component functionality.
  */
 @Theme("mytheme")
-@PreserveOnRefresh
-@Push(value = PushMode.AUTOMATIC, transport = Transport.WEBSOCKET_XHR)
 public class MyUI extends UI {
 
     @Override
@@ -31,42 +22,18 @@ public class MyUI extends UI {
         final VerticalLayout layout = new VerticalLayout();
 
         final CKEditorField editor = new CKEditorField();
-        editor.setValue("Foo");
-        editor.setWidth("600px");
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
+        editor.setValue("A <b>really important</b> text that is <i>really</i> important");
+        editor.setWidth("400px");
 
         Button button = new Button("Click Me");
-        button.addClickListener( e -> layout.addComponent(new Label("Thanks " + editor.getValue()
-                + ", it works!")));
+        button.addClickListener(e -> layout.addComponent(new Label("Text: " + editor.getValue())));
 
-        button.setClickShortcut(ShortcutAction.KeyCode.Q, ShortcutAction.ModifierKey.ALT, ShortcutAction.ModifierKey.CTRL);
-
-
-        
-        layout.addComponents(name, button);
         layout.setMargin(true);
         layout.setSpacing(true);
 
         layout.addComponent(editor);
+        layout.addComponents(button);
 
         setContent(layout);
-
-        new Thread() {
-            @Override
-            public void run() {
-                System.out.println("Thread start");
-                try {
-                    for (int i = 0; i < 5; i++) {
-                        Thread.sleep(2000);
-                        access(() -> name.setValue(name.getValue() + "a"));
-                    }
-                } catch (Throwable t) {
-                    t.printStackTrace();
-                }
-                System.out.println("Thread end");
-            }
-        }.start();
     }
-
 }

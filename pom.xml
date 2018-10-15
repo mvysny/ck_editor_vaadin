@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.pany</groupId>
-	<artifactId>project-name</artifactId>
+	<artifactId>ck-editor-vaadin</artifactId>
 	<packaging>war</packaging>
 	<version>0.1</version>
-	<name>project-name</name>
+	<name>CK Editor for Vaadin</name>
 
 	<prerequisites>
 		<maven>3</maven>
@@ -66,13 +66,6 @@
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-themes</artifactId>
 		</dependency>
-<!--
-		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-webapp</artifactId>
-			<version>9.3.24.v20180605</version>
-		</dependency>
--->
 	</dependencies>
 
 	<build>

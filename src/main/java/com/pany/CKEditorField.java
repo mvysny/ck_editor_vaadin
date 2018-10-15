@@ -15,6 +15,8 @@ import com.vaadin.ui.Window;
 import com.vaadin.ui.themes.ValoTheme;
 
 /**
+ * Wraps {@link CKEditor} in a full-blown field. The field shows a read-only preview of the contents
+ * and allows you to edit the contents in a pop-up modal window.
  * @author mavi
  */
 public class CKEditorField extends CustomField<String> {
@@ -88,5 +90,11 @@ public class CKEditorField extends CustomField<String> {
     @Override
     public Class<? extends String> getType() {
         return String.class;
+    }
+
+    @Override
+    public void setReadOnly(boolean readOnly) {
+        super.setReadOnly(readOnly);
+        edit.setVisible(!readOnly);
     }
 }
