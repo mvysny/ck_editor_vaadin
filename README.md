@@ -1,5 +1,5 @@
-The CK Editor 4 Wrapper for Vaadin
-==================================
+The CK Editor 4 Wrapper for Vaadin 7
+====================================
 
 This project hosts a Vaadin component which nests the [CK Editor 4](https://ckeditor.com/ckeditor-4/) JavaScript component.
 
