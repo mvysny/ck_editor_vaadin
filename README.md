@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mvysny/ck_editor_vaadin.svg?branch=master)](https://travis-ci.org/mvysny/ck_editor_vaadin)
+
 The CK Editor 4 Wrapper for Vaadin 7
 ====================================
 
