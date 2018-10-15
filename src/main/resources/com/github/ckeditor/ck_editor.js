@@ -28,6 +28,13 @@ com_github_ckeditor_CKEditor = function() {
     this.onStateChange = function() {
         if (delayedInit == null) {
             delayedInit = setTimeout(function() {
+                //
+                // CK Editor 4
+                // Homepage: https://ckeditor.com/docs/ckeditor4
+                //
+                // Guides: https://ckeditor.com/docs/ckeditor4/latest/guide/index.html
+                // API reference: https://ckeditor.com/docs/ckeditor4/latest/api/index.html
+                //
                 editor = CKEDITOR.replace(textarea, {
                     resize_enabled: false
                 });
