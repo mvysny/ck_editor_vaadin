@@ -1,4 +1,4 @@
-com_pany_CKEditor = function() {
+com_github_ckeditor_CKEditor = function() {
     var self = this;
     var e = this.getElement();
 
@@ -21,14 +21,21 @@ com_pany_CKEditor = function() {
     var text = "";
 
     this.updateState = function() {
+        // in the future you can poll self.getState() (which is of type CKEditorState) and update `editor`
+        // Currently there is nothing to update, so this function is kept empty.
     };
 
     this.onStateChange = function() {
         if (delayedInit == null) {
             delayedInit = setTimeout(function() {
-                editor = CKEDITOR.replace(textarea);
+                editor = CKEDITOR.replace(textarea, {
+                    resize_enabled: false
+                });
                 self.updateState();
                 editor.setData(self.getState().text);
+                delayedInit = setTimeout(function() {
+                    editor.resize(400, 300);
+                }, 100);
             }, 100);
         } else if (editor != null) {
             this.updateState();
