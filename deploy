@@ -1,7 +1,0 @@
-#!/bin/bash
-set -e -o pipefail
-mvn clean package
-
-rm -rf /home/mavi/work/DE/apache-karaf-4.1.6/deploy/*.war
-sleep 2
-cp target/*.war /home/mavi/work/DE/apache-karaf-4.1.6/deploy/
