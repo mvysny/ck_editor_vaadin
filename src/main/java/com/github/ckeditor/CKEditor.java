@@ -1,4 +1,4 @@
-package com.pany;
+package com.github.ckeditor;
 
 import com.vaadin.annotations.JavaScript;
 import com.vaadin.ui.AbstractJavaScriptComponent;

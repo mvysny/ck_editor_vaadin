@@ -1,4 +1,4 @@
-package com.pany;
+package com.github.ckeditor;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.server.VaadinRequest;

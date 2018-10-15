@@ -1,13 +1,15 @@
-project-name
-==============
+The CK Editor 4 Wrapper for Vaadin
+==================================
 
-Template for a simple Vaadin application that only requires a Servlet 3.0 container to run.
+This project hosts a Vaadin component which nests the [CK Editor 4](https://ckeditor.com/ckeditor-4/) JavaScript component.
 
+The project also includes a simple UI which demonstrates the usage of the component. This app is a demonstration project for the
+component that only requires a Servlet 3.0 container to run.
 
 Workflow
 ========
 
-To compile the entire project, run "mvn install".
+To compile the entire project, run `mvn package`.
 
 To run the application, run "mvn jetty:run" and open http://localhost:8080/ .
 
@@ -16,37 +18,18 @@ To produce a deployable production mode WAR:
 - run "mvn clean package"
 - test the war file with "mvn jetty:run-war"
 
+Using with your project
+=======================
+
+The project is unfortunately not yet deployed in any external Maven repo. You
+can run `mvn package` to create a `jar` file in the `target/` directory and drop that jar into your project.
+
+You can also simply copy the `CKEditor*.java` files into your project. You'll need the CK Editor sources itself,
+they are located in `src/main/resources/` in both `VAADIN/ckeditor` and `com/github/ckeditor` folders, respectively.
+
+
 Client-Side compilation
 -------------------------
 
-The generated maven project is using an automatically generated widgetset by default. 
-When you add a dependency that needs client-side compilation, the maven plugin will 
-automatically generate it for you. Your own client-side customisations can be added into
-package "client".
-
-Debugging client side code
-  - run "mvn vaadin:run-codeserver" on a separate console while the application is running
-  - activate Super Dev Mode in the debug window of the application
-
-Developing a theme using the runtime compiler
--------------------------
-
-When developing the theme, Vaadin can be configured to compile the SASS based
-theme at runtime in the server. This way you can just modify the scss files in
-your IDE and reload the browser to see changes.
-
-To use the runtime compilation, open pom.xml and comment out the compile-theme 
-goal from vaadin-maven-plugin configuration. To remove a possibly existing 
-pre-compiled theme, run "mvn clean package" once.
-
-When using the runtime compiler, running the application in the "run" mode 
-(rather than in "debug" mode) can speed up consecutive theme compilations
-significantly.
-
-It is highly recommended to disable runtime compilation for production WAR files.
-
-Using Vaadin pre-releases
--------------------------
-
-If Vaadin pre-releases are not enabled by default, use the Maven parameter
-"-P vaadin-prerelease" or change the activation default value of the profile in pom.xml .
+All code is written in JavaScript and no widgetset recompilation is needed. You can
+simply include all the necessary files into your project as-is.

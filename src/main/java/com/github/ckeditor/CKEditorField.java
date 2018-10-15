@@ -1,4 +1,4 @@
-package com.pany;
+package com.github.ckeditor;
 
 import com.vaadin.server.FontAwesome;
 import com.vaadin.shared.ui.label.ContentMode;
